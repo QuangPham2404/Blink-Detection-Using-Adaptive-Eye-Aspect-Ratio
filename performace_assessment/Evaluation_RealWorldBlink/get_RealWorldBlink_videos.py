@@ -50,7 +50,7 @@ while True:
 
     # Check recording duration (10 minutes)
     elapsed_time = time.time() - start_time
-    if elapsed_time >= 600:  # 10 minutes = 60 seconds/minute * 10 minutes
+    if elapsed_time >= 180:  # 3 minutes = 60 seconds/minute * 3 minutes
         break
     
     # Notify every 30 seconds, using a separate thread for notification
