@@ -26,11 +26,11 @@ This repository contains every program used for my research project, "Blink dete
 
 - The "_blink_counter_AEAR_filter_" is an update of the "blink_counter_AEAR_nofilter." Hence the name, the latter uses a Moving Average Filter with the width of 2 to calculate more stabilized EAR values.
 
-**_c. Evaluation process:_** 
+**_2. Evaluation process:_** 
 
 This project also includes programs to retrieve the performance metrics, including Precision, Recall, F1-score, and Accuracy of each model. There's a program to create the custom evaluation video dataset "RealWorldBlink"; a program to process the videos in the dataset; a program to carry out the calibration process; and a program to deploy each model on the evaluation dataset and retrieve the True Postitive (TP), False Postitive (FP), True Negative (TN), and False Negative (FN). After that, there is a program to calculate the performance metrics based on the previously collected TP, FP, TN, FN. These programs are stored in the folder "performance_evaluation."
 
-**Project progress update:** 
+**_3. Project progress update:_** 
 
 The blink detection models and algorithms are completed. I am currently completing the evluation process (80% completed), and I plan to record the official results of this project in an academic research paper, "Blink detection using Adaptive Eye Aspect Ratio." The project, including the paper, will be completed by this November (Nov 2024). Although the codes for the blink detection models and algorithms are working properly, the codes themselves are missing proper formatting and pseudocodes to improve readability. This will also be addressed in the near future.
 
