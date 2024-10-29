@@ -28,7 +28,7 @@ This repository contains every program used for my research project, "Blink dete
 
 **_c. Evaluation process:_** 
 
-This project also includes programs to retrieve the performance metrics, including Precision, Recall, F1-score, and Accuracy of each model. There's a program to create the custom evaluation video dataset "RealWorldBlink"; a program to process the videos in the dataset; a program to carry out the calibration process; and a program to deploy each model on the evaluation dataset and retrieve the True Postitive (TP), False Postitive (FP), True Negative (TN), and False Negative (FN). After that, there is a program to calculate the performance metrics based on the previously collected TP, FP, TN, FN.
+This project also includes programs to retrieve the performance metrics, including Precision, Recall, F1-score, and Accuracy of each model. There's a program to create the custom evaluation video dataset "RealWorldBlink"; a program to process the videos in the dataset; a program to carry out the calibration process; and a program to deploy each model on the evaluation dataset and retrieve the True Postitive (TP), False Postitive (FP), True Negative (TN), and False Negative (FN). After that, there is a program to calculate the performance metrics based on the previously collected TP, FP, TN, FN. These programs are stored in the folder "performance_evaluation."
 
 **Project progress update:** 
 
