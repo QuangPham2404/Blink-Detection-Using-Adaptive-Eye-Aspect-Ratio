@@ -94,7 +94,7 @@ with mp_face_mesh.FaceMesh(
                     numerator += float(dist.euclidean(mesh_points[384], mesh_points[381]))
                     numerator += float(dist.euclidean(mesh_points[388], mesh_points[390]))
                     denomenator += float(dist.euclidean(mesh_points[263], mesh_points[362]))
-                    return float((numerator)/(2*denomenator))
+                    return float((numerator)/(5*denomenator))
                 
                 left_eye_EAR = calculate_left_eye_EAR()
                 right_eye_EAR = calculate_right_eye_EAR()
@@ -124,14 +124,31 @@ with mp_face_mesh.FaceMesh(
 
                 #start the EAR threshold calibration process
                 if calibration_in_progress:
+                    #start the EAR threshold calibration process
                     text = "Calibration in progress"
                     cv2.putText(frame, text, (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
                     text = f"calibration blink count: {calibration_blink_count}"
                     cv2.putText(frame, text, (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
+
+                    # Function to handle the calibration sequence instructions
+                    def display_blink_instructions(frame, state, start_time=None):
+                        current_time = time.time()
+                        
+                        if state == 1:
+                            # After pressing "1", wait for 1 second
+                            if current_time - start_time < 1:
+                                text = "pls wait 1 s"
+                            elif current_time - start_time < 3:
+                                text = "blink, pls wait 2s"
+                            else:
+                                text = "pls press 1 to end the sequence"
+                            cv2.putText(frame, text, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+                        return frame
                     
                     if key == ord("1"):
                         if not key_1_pressed:  # First press
                             key_1_pressed = True
+                            start_time = time.time()  # Mark the start time when "1" is pressed
                         else:
                             key_1_pressed = False
                     elif key == ord("q"):
@@ -139,7 +156,8 @@ with mp_face_mesh.FaceMesh(
 
                     # Append EAR values while key is pressed (i.e., part of blink detection)
                     if key_1_pressed:
-                        blinkEARs.append(smoothen_value)
+                        frame = display_blink_instructions(frame, 1, start_time)
+                        blinkEARs.append(averaged_EAR)
 
                     text = f"key 1 pressed once: {key_1_pressed}"
                     cv2.putText(frame, text, (400, 300), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
@@ -147,7 +165,6 @@ with mp_face_mesh.FaceMesh(
                     # Check if the key was pressed and then released (i.e., a full blink)
                     if not key_1_pressed and len(blinkEARs) != 0:
                         calibration_blink_count += 1
-                        print(blinkEARs)
                         blinkEARs_list.append(blinkEARs.copy())  # Store the blink EAR sequence
                         blinkEARs = []  # Reset for the next blink
 
@@ -169,7 +186,7 @@ with mp_face_mesh.FaceMesh(
                                 except IndexError:
                                     pass
                                 i += 1
-                        initial_EARThresh = max(blink_sequence_EARs)
+                        initial_EARThresh = min(blink_sequence_EARs) #switch from max to min
                         print(initial_EARThresh)
                 else:
                     #setting the EAR_THRESH to the initial EARThresh retrieved after the calibration process
