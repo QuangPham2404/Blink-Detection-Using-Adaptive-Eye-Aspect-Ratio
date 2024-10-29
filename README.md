@@ -6,7 +6,7 @@ This repository contains every program used for my research project, "Blink dete
 
 **1. Blink detection models**
 
-**_a. Support Vector Machines (SVM) models:_** This project contains 3 SVM models for blink detection, 2 of which (the first and second one mentioned below) is previously developed in another project.
+**_a. Support Vector Machines (SVM) models:_** This project contains 3 SVM models for blink detection, these are previously developed in another project.
 
 - The "_orginal_svm_" is created following the proposal of Soukupova T. & Cech J. 2016 paper "Eye blink detection using facial landmarks." The SVM model is trained on the publicly available EyeBlink8 dataset created by Drutarovsky T. & Fogelton A. in their 2015 paper "Eye Blink Detection Using Variance of Motion Vectors." The Eye Aspect Ratio is calculated using 3 eye landmark coordinate pairs detected by Google's MediaPipe Face Landmark Detector. The model has 0.98 Accuracy and good performance in other metrics, including F1, Recall, and Precision. This SVM model is previously created in another project called "Embedded System for Computer Vision Relief."
 
