@@ -14,6 +14,8 @@ This repository contains every program used for my research project, "Blink dete
 
 - The "_new_svm_maf_and_extracoords_" is another update of the first model. For this model, we used 5 pairs of eye landmark coordinates to calculate the EAR (an adjustment from using 7 pairs to minimize calculation errors) and applied a Moving Average Filter with a width of 2 to achieve stablized EAR values. This model is trained on EyeBlink8, and it yielded 0.98 accuracy and similar performance in other metrics compared to the first model. However, it has a slightly better score when it comes to classifying positive blinks (class 1).
 
+- _Update 12/01/2024:_ The previous models exhibits a bias towards the positive class (class 1) due to the imbalance in the training dataset (EyeBlink8). To mitigate this, we added a filter when selecting the negative samples (class 0) such that only negatives samples at least 5 frames before of after a positive sample are selected. Furthermore, we added a data augumentation including chaging the resolution, adding noise, etc to explicitly for the positivie samples. These actions is to decrease the number of negative samples and increase the number of positive samples, which in turn alleviate the imbalance in the dataset and improve the performance for class 1 classification.
+
 **_b. Non-machine learning blink detection algorithms:_** This project contains 6 non-machine learning algorithms for blink detection.
 
 - The "_blink_counter_EARThresh_" is an update of an algorithm proposed by Soukupova T. & Cech J. 2016 paper "Eye blink detection using facial landmarks." In the paper, the algorithm detects blink by calculating the EAR in real time and comparing it with a fixed EAR threshold of 0.2. The model in this project is similar, but a blink duration threshold of 12 frames is added to differentiate between blinks and other facial expressions such as yawning and smiling.
@@ -31,6 +33,8 @@ This repository contains every program used for my research project, "Blink dete
 **_2. Evaluation process:_** 
 
 This project also includes programs to retrieve the performance metrics, including Precision, Recall, F1-score, and Accuracy of each model. There's a program to create the custom evaluation video dataset "RealWorldBlink"; a program to process the videos in the dataset; a program to carry out the calibration process; and a program to deploy each model on the evaluation dataset and retrieve the True Postitive (TP), False Postitive (FP), True Negative (TN), and False Negative (FN). After that, there is a program to calculate the performance metrics based on the previously collected TP, FP, TN, FN. These programs are stored in the folder "performance_evaluation."
+
+_Update 01/12/2024:_ The blink detection algorithms are also tested on the public EyeBlink8 dataset. The codes for this procedure is in the "Evaluation_EyeBlink8" folder within the "Performance_evaluation" folder.
 
 **_3. Project progress update:_** 
 
