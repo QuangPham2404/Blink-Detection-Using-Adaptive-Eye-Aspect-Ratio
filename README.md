@@ -1,3 +1,5 @@
+**Link to completed paper:** https://docs.google.com/document/d/1o_ceXoJE4kSdIch3ptPYp8SVXIfFYCiZsr3tMimQb1I/edit?tab=t.0
+
 **Project overview**
 
 This repository contains every program used for my research project, "Blink detection using Adaptive Eye Aspect Ratio." The project contains 3 Support Vector Machine (SVM) models for blink detection and 6 non-machine learning blink detection algorithms. The repository also contains a folder that stores programs used to create a custom evaluation dataset called "RealWorldBlink" and run the evaluation process to retrieve the accuracy metrics of each model.
